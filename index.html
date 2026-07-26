@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quanta — Studio for Web, Software, AI &amp; Growth</title>
+<meta name="description" content="Quanta is a multidisciplinary studio building websites, software, custom AI, and running the marketing, advertising, production and SEO that gets them seen.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__mark">
+      <span class="nav__mark-dot"></span>
+      QUANTA
+    </a>
+
+    <nav class="nav__links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#work">Work</a>
+      <a href="#contact" class="nav__cta">Start a project</a>
+    </nav>
+
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <canvas id="quantaCanvas" class="hero__canvas"></canvas>
+
+  <div class="hero__content">
+    <p class="eyebrow" data-reveal>
+      <span class="eyebrow__code">Q·01</span> Studio — Web · Software · AI · Growth
+    </p>
+
+    <h1 class="hero__title" data-reveal>
+      Every service we offer<br>
+      is a <span class="hl">discrete jump</span> —<br>
+      not a vague promise.
+    </h1>
+
+    <p class="hero__sub" data-reveal>
+      Quanta is a small studio that builds the thing — a site, an app, an AI system —
+      and runs the marketing, media and search that make sure it gets found.
+      Named for the smallest unit of change that actually matters. That's the standard.
+    </p>
+
+    <div class="hero__actions" data-reveal>
+      <a href="#contact" class="btn btn--primary">Start a project</a>
+      <a href="#services" class="btn btn--ghost">See what we build</a>
+    </div>
+  </div>
+
+  <div class="hero__spectrum" aria-hidden="true">
+    <div class="spectrum-line"></div>
+    <div class="spectrum-labels">
+      <span>450nm</span><span>500nm</span><span>550nm</span><span>600nm</span><span>650nm</span><span>700nm</span>
+    </div>
+  </div>
+
+  <a class="scroll-cue" href="#services" aria-label="Scroll to services">
+    <span></span>
+  </a>
+</section>
+
+<!-- ============ ABOUT STRIP ============ -->
+<section class="about">
+  <div class="about__inner">
+    <p class="about__lead" data-reveal>
+      Most agencies hand you a website and disappear. Most marketers can't ship you
+      an app. Most AI shops can't shoot a reel. <strong>Quanta runs all four disciplines
+      under one roof</strong> — so the thing you launch and the story you tell about it
+      come from the same place, at the same time.
+    </p>
+
+    <div class="about__stats" data-reveal>
+      <div class="stat">
+        <span class="stat__num">01</span>
+        <span class="stat__label">Studio,<br>four disciplines</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num">∞</span>
+        <span class="stat__label">Revisions until<br>it's actually right</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num">Q</span>
+        <span class="stat__label">One point of contact,<br>start to launch</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="section-head">
+    <p class="eyebrow"><span class="eyebrow__code">Q·02</span> What we build</p>
+    <h2>Seven disciplines.<br>One spectrum.</h2>
+    <p class="section-head__sub">
+      Each service below sits at its own point on the spectrum — hover a line,
+      see its color find the card. Nothing here is decorative; it's how the studio is organized.
+    </p>
+  </div>
+
+  <div class="services__grid" id="servicesGrid">
+
+    <article class="service-card" data-wave="620" data-index="01">
+      <div class="service-card__glow"></div>
+      <span class="service-card__wave">λ 620nm</span>
+      <h3>Web Development</h3>
+      <p>Marketing sites, product sites, dashboards and portals — built fast,
+        built to load in under a second, built to actually convert.</p>
+      <ul class="service-card__tags">
+        <li>Custom front-end builds</li>
+        <li>CMS &amp; e-commerce</li>
+        <li>Performance &amp; hosting</li>
+      </ul>
+    </article>
+
+    <article class="service-card" data-wave="590" data-index="02">
+      <div class="service-card__glow"></div>
+      <span class="service-card__wave">λ 590nm</span>
+      <h3>Software Development</h3>
+      <p>Internal tools, SaaS products, mobile apps, automation pipelines —
+        software built around how your team actually works.</p>
+      <ul class="service-card__tags">
+        <li>Web &amp; mobile apps</li>
+        <li>Internal tools &amp; SaaS</li>
+        <li>APIs &amp; integrations</li>
+      </ul>
+    </article>
+
+    <article class="service-card" data-wave="500" data-index="03">
+      <div class="service-card__glow"></div>
+      <span class="service-card__wave">λ 500nm</span>
+      <h3>Custom AI Solutions</h3>
+      <p>AI agents, chat and voice assistants, LLM-powered workflows and internal
+        copilots — trained on your data, not a generic demo.</p>
+      <ul class="service-card__tags">
+        <li>AI agents &amp; copilots</li>
+        <li>Workflow automation</li>
+        <li>Model integration</li>
+      </ul>
+    </article>
+
+    <article class="service-card" data-wave="460" data-index="04">
+      <div class="service-card__glow"></div>
+      <span class="service-card__wave">λ 460nm</span>
+      <h3>Social Media Marketing</h3>
+      <p>Content calendars, community management and organic growth strategy
+        across the platforms your audience actually spends time on.</p>
+      <ul class="service-card__tags">
+        <li>Content strategy</li>
+        <li>Channel management</li>
+        <li>Community growth</li>
+      </ul>
+    </article>
+
+    <article class="service-card" data-wave="700" data-index="05">
+      <div class="service-card__glow"></div>
+      <span class="service-card__wave">λ 700nm</span>
+      <h3>Advertising &amp; Ad Campaigns</h3>
+      <p>Paid media across search, social and display — planned, targeted,
+        tracked, and iterated until the cost per result actually goes down.</p>
+      <ul class="service-card__tags">
+        <li>Paid social &amp; search</li>
+        <li>Campaign strategy</li>
+        <li>Analytics &amp; reporting</li>
+      </ul>
+    </article>
+
+    <article class="service-card" data-wave="560" data-index="06">
+      <div class="service-card__glow"></div>
+      <span class="service-card__wave">λ 560nm</span>
+      <h3>Ad Shooting &amp; Production</h3>
+      <p>Photo and video production for product shots, reels, and campaign
+        creative — shot with the final placement in mind, not as an afterthought.</p>
+      <ul class="service-card__tags">
+        <li>Product &amp; brand photography</li>
+        <li>Reels &amp; video ads</li>
+        <li>Edit &amp; post-production</li>
+      </ul>
+    </article>
+
+    <article class="service-card" data-wave="480" data-index="07">
+      <div class="service-card__glow"></div>
+      <span class="service-card__wave">λ 480nm</span>
+      <h3>SEO</h3>
+      <p>Technical audits, on-page fixes, and content structure that gets your
+        site found for the searches that actually bring in business.</p>
+      <ul class="service-card__tags">
+        <li>Technical SEO audits</li>
+        <li>On-page optimization</li>
+        <li>Content &amp; keyword strategy</li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process" id="process">
+  <div class="section-head">
+    <p class="eyebrow"><span class="eyebrow__code">Q·03</span> How it runs</p>
+    <h2>Four stages.<br>No surprise invoices.</h2>
+  </div>
+
+  <div class="process__rail">
+    <div class="process__step" data-reveal>
+      <span class="process__mark">01</span>
+      <h3>Scope</h3>
+      <p>We map exactly what you need built and what "done" looks like — in writing,
+        before any work starts.</p>
+    </div>
+    <div class="process__step" data-reveal>
+      <span class="process__mark">02</span>
+      <h3>Build</h3>
+      <p>Design and development run in short cycles, with something real to look
+        at within the first week — not just slides.</p>
+    </div>
+    <div class="process__step" data-reveal>
+      <span class="process__mark">03</span>
+      <h3>Launch</h3>
+      <p>We ship it — site live, app deployed, campaign running — and stay on
+        through the first real traffic it sees.</p>
+    </div>
+    <div class="process__step" data-reveal>
+      <span class="process__mark">04</span>
+      <h3>Grow</h3>
+      <p>Marketing, ads, SEO and content keep compounding after launch, with
+        reporting you can actually read.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="work" id="work">
+  <div class="section-head">
+    <p class="eyebrow"><span class="eyebrow__code">Q·04</span> Recent work</p>
+    <h2>A few things<br>we've shipped.</h2>
+  </div>
+
+  <div class="work__grid">
+    <article class="work-card" data-reveal>
+      <div class="work-card__frame"><span>Project A</span></div>
+      <h3>Project name</h3>
+      <p>One line on what was built and the result. Replace with a real case study.</p>
+    </article>
+    <article class="work-card" data-reveal>
+      <div class="work-card__frame"><span>Project B</span></div>
+      <h3>Project name</h3>
+      <p>One line on what was built and the result. Replace with a real case study.</p>
+    </article>
+    <article class="work-card" data-reveal>
+      <div class="work-card__frame"><span>Project C</span></div>
+      <h3>Project name</h3>
+      <p>One line on what was built and the result. Replace with a real case study.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <canvas id="contactCanvas" class="contact__canvas"></canvas>
+  <div class="contact__inner">
+    <p class="eyebrow"><span class="eyebrow__code">Q·05</span> Start a project</p>
+    <h2>Tell us what<br>you're building.</h2>
+    <p class="contact__sub">One message, one reply, one point of contact from
+      here to launch.</p>
+
+    <form class="contact__form" id="contactForm">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="service">What do you need?</label>
+        <select id="service" name="service">
+          <option>Website</option>
+          <option>Software / App</option>
+          <option>Custom AI</option>
+          <option>Social Media Marketing</option>
+          <option>Advertising</option>
+          <option>Ad Shooting / Production</option>
+          <option>SEO</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="field field--wide">
+        <label for="message">Project details</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn--primary btn--wide">Send message</button>
+      <p class="form__status" id="formStatus" role="status"></p>
+    </form>
+
+    <div class="contact__direct">
+      <a href="mailto:hello@quanta.studio">hello@quanta.studio</a>
+      <span class="contact__divider">/</span>
+      <a href="#">@quanta.studio</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <span class="nav__mark nav__mark--small"><span class="nav__mark-dot"></span>QUANTA</span>
+    <p>&copy; <span id="year"></span> Quanta Studio. Built in-house, obviously.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
