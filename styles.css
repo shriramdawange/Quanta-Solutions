@@ -65,7 +65,7 @@ button{ font-family:inherit; cursor:pointer; }
 .grain{
   position:fixed; inset:0; pointer-events:none; z-index:999;
   opacity:0.035; mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctave[...]
 }
 
 .cursor-glow{
@@ -79,7 +79,7 @@ button{ font-family:inherit; cursor:pointer; }
 .container{ max-width:var(--container); margin:0 auto; padding:0 32px; }
 
 /* =========================================================
-   REVEAL ON SCROLL
+   REVEAL ON SCROLL (enhanced with 3D entrance tilt)
    ========================================================= */
 [data-reveal]{
   opacity:0;
@@ -87,6 +87,17 @@ button{ font-family:inherit; cursor:pointer; }
   transition:opacity 0.8s var(--ease), transform 0.8s var(--ease);
 }
 [data-reveal].is-visible{ opacity:1; transform:translateY(0); }
+
+/* Apply 3D tilt entrance only on devices with hover/fine pointer,
+   when prefers-reduced-motion is not set */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  [data-reveal]{
+    transform:rotateX(6deg) translateY(24px);
+  }
+  [data-reveal].is-visible{
+    transform:rotateX(0) translateY(0);
+  }
+}
 
 /* =========================================================
    NAV
@@ -136,22 +147,65 @@ button{ font-family:inherit; cursor:pointer; }
 .nav__toggle span{ width:22px; height:1.5px; background:var(--text); transition:transform 0.3s, opacity 0.3s; }
 
 /* =========================================================
-   HERO
+   HERO (with 3D parallax depth and perspective)
    ========================================================= */
 .hero{
   position:relative; min-height:100vh;
   display:flex; align-items:center;
   padding:140px 32px 100px;
   overflow:hidden;
+  perspective:1200px;
 }
+
 .hero__canvas{
   position:absolute; inset:0; width:100%; height:100%;
   z-index:0; opacity:0.9;
 }
+
+.hero__canvas--galaxy{
+  z-index:-1;
+  opacity:0.4;
+  mix-blend-mode:screen;
+}
+
 .hero__content{
   position:relative; z-index:2; max-width:760px; margin:0 auto; width:100%;
   text-align:center; display:flex; flex-direction:column; align-items:center;
+  transform-style:preserve-3d;
+  transition:transform 0.06s linear;
 }
+
+/* Hero parallax depth: three layers move at different rates on mouse move */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hero {
+    transform-style: preserve-3d;
+  }
+
+  /* Galaxy layer: least movement */
+  .hero__canvas--galaxy {
+    transition: transform 0.06s linear;
+  }
+
+  /* Quantum canvas: medium movement */
+  .hero__canvas:not(.hero__canvas--galaxy) {
+    transition: transform 0.06s linear;
+  }
+
+  /* Content layer: most movement */
+  .hero__content {
+    transform-style: preserve-3d;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero {
+    perspective: none;
+  }
+  .hero__content {
+    transform: none !important;
+  }
+}
+
 .eyebrow{
   font-family:var(--font-mono); font-size:12.5px; letter-spacing:0.14em;
   text-transform:uppercase; color:var(--text-dim);
@@ -248,26 +302,47 @@ button{ font-family:inherit; cursor:pointer; }
 .section-head__sub{ max-width:520px; font-size:15.5px; }
 
 /* =========================================================
-   SERVICES
+   SERVICES (with 3D card tilt on hover + cursor-tracking glow)
    ========================================================= */
 .services{ padding:110px 0; border-top:1px solid var(--line); }
 .services__grid{
   max-width:var(--container); margin:0 auto; padding:0 32px;
   display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
   background:var(--line); border:1px solid var(--line); border-radius:18px; overflow:hidden;
+  perspective:1200px;
 }
+
 .service-card{
   position:relative; background:var(--surface); padding:36px 30px;
   transition:background 0.35s var(--ease);
   --card-hue: 200;
+  transform-style:preserve-3d;
+  transition:background 0.35s var(--ease), transform 0.06s linear;
 }
+
 .service-card:hover{ background:var(--surface-2); }
+
 .service-card__glow{
   position:absolute; inset:0; opacity:0; pointer-events:none;
   transition:opacity 0.4s var(--ease);
   background:radial-gradient(circle at 30% 0%, hsla(var(--card-hue),90%,65%,0.16), transparent 60%);
 }
+
 .service-card:hover .service-card__glow{ opacity:1; }
+
+/* 3D tilt effect on service cards (desktop, hover-capable, no reduced motion) */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .service-card {
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 680px) {
+  .service-card {
+    transform: none !important;
+  }
+}
+
 .service-card__wave{
   display:inline-block; font-family:var(--font-mono); font-size:11.5px;
   color:hsl(var(--card-hue),85%,68%);
@@ -394,11 +469,11 @@ button{ font-family:inherit; cursor:pointer; }
   .nav__links.is-open{ transform:translateX(0); }
   .nav__toggle{ display:flex; }
 
-  .services__grid{ grid-template-columns:1fr; }
+  .services__grid{ grid-template-columns:1fr; perspective: none; }
   .process__rail{ grid-template-columns:1fr; row-gap:32px; }
   .work__grid{ grid-template-columns:1fr; }
   .contact__form{ grid-template-columns:1fr; }
   .about__stats{ flex-direction:column; gap:28px; }
-  .hero{ padding:120px 20px 90px; }
+  .hero{ padding:120px 20px 90px; perspective: none; }
   .hero__spectrum{ display:none; }
 }
